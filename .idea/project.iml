@@ -23,8 +23,11 @@
       <list>
         <option value="$MODULE_DIR$/purchase/templates" />
         <option value="$MODULE_DIR$/storage/templates" />
-        <option value="$MODULE_DIR$/user/templates" />
-        <option value="$MODULE_DIR$/customer/templates" />
+        <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/system/templates" />
+        <option value="$MODULE_DIR$/sales/templates" />
+        <option value="$MODULE_DIR$/report/templates" />
+        <option value="$MODULE_DIR$/information/templates" />
       </list>
     </option>
   </component>

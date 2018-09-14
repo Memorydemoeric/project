@@ -34,9 +34,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'purchase.apps.PurchaseConfig',
-    'customer.apps.CustomerConfig',
+    'information.apps.InformationConfig',
     'storage.apps.StorageConfig',
-    'user.apps.UserConfig',
+    'system.apps.SystemConfig',
+    'report.apps.ReportConfig',
+    'sales.apps.SalesConfig',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +55,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -2,12 +2,13 @@ import datetime
 
 from django.db import models
 
+from information.models import CustomerInfo
+
 # Create your models here.
 
+
+
 # 订单
-from customer.models import CustomerInfo
-
-
 class Purchase(models.Model):
     pur_location_name = models.CharField(max_length=64)
     pur_cust_name = models.CharField(max_length=64)
