@@ -5,6 +5,9 @@ from django.db import models
 # Create your models here.
 
 # 订单
+from customer.models import CustomerInfo
+
+
 class Purchase(models.Model):
     pur_location_name = models.CharField(max_length=64)
     pur_cust_name = models.CharField(max_length=64)
@@ -13,7 +16,7 @@ class Purchase(models.Model):
     pur_modify_date = models.DateField(default= datetime.datetime.now().strftime('%Y-%m-%d'))
     pur_finished_date = models.DateField(auto_now=True)
     pur_handle = models.CharField(max_length=256)
-    cust_id = models.ForeignKey('CustomerInfo', on_delete=models.PROTECT)
+    cust_id = models.ForeignKey(CustomerInfo, on_delete=models.PROTECT)
     is_finished = models.BooleanField(default=0)
     is_delete = models.BooleanField(default=0)
 

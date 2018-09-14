@@ -1,0 +1,30 @@
+#order {
+    height: 12rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+    overflow: auto;
+}
+
+#order_detail_title {
+    height: 4rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+}
+
+#order_detail {
+    width: 76%;
+    height: 40rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+    overflow-y: scroll;
+}
+
+#order_detail_footer {
+    height: 4rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+}
+
+#file_in {
+    display: none;
+}
