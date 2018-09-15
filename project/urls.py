@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^info/', information_views.info_manage),
     url(r'^system/', system_views.system_manage),
     url(r'^create_pur_order/', puechase_views.create_purchase_order),
+    url(r'^input_cust_info/', information_views.input_cust_info),
 ]
 
 
