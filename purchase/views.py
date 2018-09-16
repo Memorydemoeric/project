@@ -1,8 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from common.DataProcess.excel_loads import load_storage_excel
 from information.models import CustomerInfo, UserInfo
 from purchase.models import Purchase
+from storage.models import StorageProduct
 
 
 def purchase_manage(request):
@@ -31,3 +34,5 @@ def create_purchase_order(request):
         data['user_info'] = usr_lt
         data['pur_orders'] = pur_orders
         return render(request, 'create_purchase_order.html', data)
+
+
