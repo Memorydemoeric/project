@@ -1,4 +1,5 @@
-from App.models import StorageProduct, Purchase, PurchaseDetail
+from purchase.models import Purchase, PurchaseDetail
+from storage.models import StorageProduct
 
 
 def purchase_detail_input(pro_id, ord_id, pro_count):
@@ -11,9 +12,9 @@ def purchase_detail_input(pro_id, ord_id, pro_count):
         if repeat_pro:
             pur_detail = repeat_pro.first()
             pur_detail.pur_pro_count += int(pro_count)
-            pur_detail.pur_pro_price += int(
-                pro_count) * pro_info.pro_sell_unit_price * pur_info.cust_id.cust_rebate / 100
-            pur_detail.save()
+            pur_detail.pur_pro_price += round(int(
+                pro_count) * pro_info.pro_sell_unit_price * pur_info.cust_id.cust_rebate / 100, 2)
+            return pur_detail
         else:
             pur_detail = PurchaseDetail()
             pur_detail.pur_pro_id = pro_id
@@ -23,4 +24,4 @@ def purchase_detail_input(pro_id, ord_id, pro_count):
             pur_detail.pur_pro_price = round(int(
                 pro_count) * pro_info.pro_sell_unit_price * pur_info.cust_id.cust_rebate / 100, 2)
             pur_detail.pur_id_id = ord_id
-            pur_detail.save()
+            return pur_detail

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'system.apps.SystemConfig',
     'report.apps.ReportConfig',
     'sales.apps.SalesConfig',
+    # 'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+PURCHASE_BAK = os.path.join(BASE_DIR, 'file_bak' + os.sep + 'purchase')

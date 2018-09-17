@@ -10,7 +10,7 @@ $(function () {
             var $new_date = $('#modify').val();
 
             $.ajax({
-                'url': '/edit_pur_date/',
+                'url': '/purchase/edit_pur_date/',
                 'type': 'post',
                 'data': {
                     'order_id': $ord_id,
@@ -18,7 +18,7 @@ $(function () {
                 },
                 success: function (res) {
                     if (res.code1 == '888') {
-                        window.location.href = '/edit_pur_order/?ord_id=' + $ord_id
+                        window.location.href = '/purchase/edit_pur_order/?ord_id=' + $ord_id
                     }
                 }
             });

@@ -1,8 +1,8 @@
 $(function () {
     $('#location').change(function () {
-        console.log('修改1。。。');
+        console.log('修改。。。')
         $.ajax({
-            url: '/create_pur_order/',
+            url: '/purchase/show_pur_order/',
             type: 'post',
             data: {
                 'location': $('#location').val(),
@@ -22,7 +22,6 @@ $(function () {
 
     $('#cust_name').change(function () {
         var $cust_id = $('#cust_name option:selected').attr('name');
-        console.log($cust_id);
         $('#secret_cust_id').val($cust_id);
     });
 
@@ -30,7 +29,7 @@ $(function () {
     $('.del_order').click(function () {
         var $order_id = $(this).attr('name');
         $.ajax({
-            'url': '/delete_pur_order/',
+            'url': '/purchase/delete_pur_order/',
             'type': 'post',
             'data': {'id': $order_id},
             success: function (res) {

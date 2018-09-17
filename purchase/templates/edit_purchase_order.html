@@ -59,7 +59,7 @@
 
 
     <section class="col-md-10" id="add_order">
-        <form class="form-inline" action="/create_pur_detail/?ord_id={{ order.id }}" method="post" enctype="multipart/form-data" id="upload_form">
+        <form class="form-inline" action="/purchase/create_pur_detail/?ord_id={{ order.id }}" method="post" enctype="multipart/form-data" id="upload_form">
             <div class="form-group">
                 <label for="pro_id">商品编号：</label>
                 <input type="text" class="form-control" name="pro_id" id="pro_id" placeholder="请输入商品编号">
@@ -106,7 +106,7 @@
                     <td width="10%">{{ order.cust_id.cust_rebate }}</td>
                     <td width="15%">{{ foo.pur_pro_price|floatformat:'2' }}</td>
                     <td width="20%"><a name="order_{{ foo.pur_pro_id }}" class="del_order_detail"
-                                       href="/del_order_detail/?ord_id={{ order.id }}&pur_pro_id={{ foo.pur_pro_id }}">删除</a>
+                                       href="/purchase/del_order_detail/?ord_id={{ order.id }}&pur_pro_id={{ foo.pur_pro_id }}">删除</a>
                     </td>
                 </tr>
             {% endfor %}

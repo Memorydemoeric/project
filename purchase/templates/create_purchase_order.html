@@ -27,14 +27,14 @@
 
 {% block body %}
     <section class="col-md-10" id="add_order">
-        <form class="form-inline" action="/show_pur_order/" method="post">
+        <form class="form-inline" action="/purchase/create_pur_order/" method="post">
             <div class="form-group">
                 <label for="location">地区：</label>
-                <input type="text" class="form-control" name="location" id="location" placeholder="请输入地区">
+                <input type="text" class="form-control" name="pur_location_name" id="location" placeholder="请输入地区">
             </div>
             <div class="form-group">
                 <label for="cust_name">　客户姓名：</label>
-                <select class="form-control" id="cust_name" name="cust_name">
+                <select class="form-control" id="cust_name" name="pur_cust_name">
                     {% for foo in cust_info %}
                         <option name="{{ foo.id }}">{{ foo.name }}</option>
                     {% endfor %}
@@ -43,11 +43,11 @@
             <input type="text" style="display: none" value="{{ cust_info.0.id }}" id="secret_cust_id" name="cust_id">
             <div class="form-group">
                 <label for="pre_date">　预计完成日期：</label>
-                <input type="date" class="form-control" id="pre_date" placeholder="请输入预计完成日期" name="pre_date">
+                <input type="date" class="form-control" id="pre_date" placeholder="请选择预计完成日期" name="pur_modify_date">
             </div>
             <div class="form-group">
                 <label for="handle">　经手人：</label>
-                <select class="form-control" id="handle" name="handle">
+                <select class="form-control" id="handle" name="pur_handle">
                     {% for usr in user_info %}
                         <option>{{ usr }}</option>
                     {% endfor %}
@@ -81,7 +81,7 @@
                     <td>{{ order.pur_modify_date }}</td>
                     <td>{{ order.pur_handle }}</td>
                     <td><a name="order_{{ order.id }}" class="modify_order"
-                           href="/edit_pur_order/?ord_id={{ order.id }}">修改</a>　|　<span
+                           href="/purchase/edit_pur_order/?ord_id={{ order.id }}">修改</a>　|　<span
                             name="order_{{ order.id }}" class="del_order">删除</span></td>
                 </tr>
             {% endfor %}
