@@ -3,7 +3,7 @@ $(function () {
     var $ord_id = $('#modify_date').attr('name')
     $('#modify_date').click(function () {
         $(this).parent().replaceWith('<td><input type="date" id="modify"></td>');
-        $modify = $('#modify')
+        $modify = $('#modify');
 
 
         $modify.change(function () {

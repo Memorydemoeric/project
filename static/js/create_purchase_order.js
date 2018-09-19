@@ -1,6 +1,5 @@
 $(function () {
     $('#location').change(function () {
-        console.log('修改。。。')
         $.ajax({
             url: '/purchase/show_pur_order/',
             type: 'post',
@@ -10,7 +9,7 @@ $(function () {
             success: function (result) {
                 $('#cust_name option').remove();
                 for (i of result.cust_info) {
-                    console.log(i.id)
+                    console.log(i.id);
                     $('#cust_name').append('<option name="' + i.id + '">' + i.name + '</option>')
                 }
                 var $cust_id = $('#cust_name option:selected').attr('name');

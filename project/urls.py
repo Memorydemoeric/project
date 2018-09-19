@@ -32,9 +32,12 @@ urlpatterns = [
     url(r'^purchase/create_pur_order/', purchase_views.create_purchase_order),
     url(r'^purchase/show_pur_order/', purchase_views.show_purchase_order),
     url(r'^purchase/edit_pur_order/', purchase_views.edit_purchase_order),
+    url(r'^purchase/edit_pur_date/', purchase_views.edit_purchase_date),
     url(r'^purchase/delete_pur_order/', purchase_views.delete_purchase_order),
     url(r'^purchase/create_pur_detail/', purchase_views.create_purchase_detail),
     url(r'^purchase/del_order_detail/', purchase_views.del_order_detail),
+    url(r'^purchase/query_purchase/', purchase_views.query_purchase),
+    url(r'^purchase/select_purchase/', purchase_views.select_purchase),
 
 
 

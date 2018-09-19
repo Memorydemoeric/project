@@ -1,12 +1,10 @@
 {% extends 'base_main.html' %}
 {% load static %}
 {% block ex_css %}
-    <link rel="stylesheet" href="{% static 'css/create_purchase_order.css' %}">
     <link rel="stylesheet" href="{% static 'css/edit_purchase_order.css' %}">
 {% endblock %}
 
 {% block ex_js %}
-    <script type="text/javascript" src="{% static 'js/create_purchase_order.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/edit_purchase_order.js' %}"></script>
 {% endblock %}
 
@@ -99,14 +97,14 @@
             <tbody>
             {% for foo in order_detail %}
                 <tr>
-                    <td width="10%">{{ foo.pur_pro_id }}</td>
+                    <td width="10%">{{ foo.pur_pro_id_id }}</td>
                     <td width="15%">{{ foo.pur_pro_type }}</td>
                     <td width="15%">{{ foo.pur_pro_count }}</td>
                     <td width="15%">{{ foo.pur_pro_unit_price }}</td>
                     <td width="10%">{{ order.cust_id.cust_rebate }}</td>
                     <td width="15%">{{ foo.pur_pro_price|floatformat:'2' }}</td>
-                    <td width="20%"><a name="order_{{ foo.pur_pro_id }}" class="del_order_detail"
-                                       href="/purchase/del_order_detail/?ord_id={{ order.id }}&pur_pro_id={{ foo.pur_pro_id }}">删除</a>
+                    <td width="20%"><a name="order_{{ foo.pur_pro_id_id }}" class="del_order_detail"
+                                       href="/purchase/del_order_detail/?ord_id={{ order.id }}&pur_pro_id={{ foo.pur_pro_id_id }}">删除</a>
                     </td>
                 </tr>
             {% endfor %}

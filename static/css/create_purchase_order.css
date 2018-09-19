@@ -11,6 +11,7 @@ td, th {
 }
 
 #add_order {
+    width: 84%;
     padding: 0 2rem;
     margin: 2rem 2rem;
 }
