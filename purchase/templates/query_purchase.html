@@ -1,0 +1,140 @@
+{% extends 'base_main.html' %}
+{% load static %}
+{% block ex_css %}
+    <link rel="stylesheet" href="{% static 'css/query_purchase.css' %}">
+{% endblock %}
+
+{% block ex_js %}
+    <script type="text/javascript" src="{% static 'js/query_purchase.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+    <nav class="col-md-1  navbar navbar-default" id="main_navigate">
+        <div class="container-fluid">
+            <ul class="nav nav-pills nav-stacked">
+                <!-- 这里的active属性就是使得所在的li的背景色变为蓝色-->
+                <li class="active"><a href="/purchase/">进货管理</a></li>
+                <li><a href="/sales/">销售管理</a></li>
+                <li><a href="/storage/">库存管理</a></li>
+                <li><a href="/report/">报表管理</a></li>
+                <li><a href="/info/">基本资料</a></li>
+                <li><a href="/system/">系统维护</a></li>
+            </ul>
+        </div>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <section class="col-md-9" id="order_title">
+        <table class="table table-striped" id="pur_order_title">
+            <thead>
+            <tr>
+                <th width="10%">
+                    <label style="margin: 0 0;" for="all_select">全选　</label>
+                    <input type="checkbox" id="all_select" class="all_select">
+                </th>
+                <th width="15%">订单编号</th>
+                <th width="15%">地区</th>
+                <th width="15%">客户姓名</th>
+                <th width="15%">金额</th>
+                <th width="20%">预计完成时间</th>
+                <th width="10%">经手人</th>
+            </tr>
+            </thead>
+        </table>
+    </section>
+    <section class="col-md-9" id="order_body">
+        <table class="table table-striped" id="pur_order_foot">
+            <tbody name="order_{{ order.id }}">
+
+
+            {% for order in order_infos %}
+                <tr>
+                    <th width="10%">　　　
+                        <input type="checkbox" class="pur_select" id="{{ order.id }}" status="{{ order.is_selected }}">
+                    </th>
+                    <td width="15%">{{ order.id }}</td>
+                    <td width="15%">{{ order.pur_location_name }}</td>
+                    <td width="15%">{{ order.pur_cust_name }}</td>
+                    <td width="15%">{{ order.pur_price|floatformat:'2' }}</td>
+                    <td width="20%">{{ order.pur_modify_date }}</td>
+                    <td width="10%">{{ order.pur_handle }}</td>
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+    </section>
+
+    <section class="col-md-9" id="order_detail_footer">
+        <table class="table table-striped">
+            <tfoot>
+            <th width="10%">合计：</th>
+            <th width="15%"></th>
+            <th width="15%"></th>
+            <th width="15%"></th>
+            <th width="15%">{{ total_price|floatformat:'2' }} 元</th>
+            <th width="20%"></th>
+            <th width="10%"></th>
+            </tfoot>
+        </table>
+    </section>
+
+
+
+    <section class="col-md-9" id="order_detail_title">
+        <table class="table table-striped" id="pur_order_detail">
+            <thead>
+            <th width="20%">商品编号</th>
+            <th width="20%">订货数量</th>
+            <th width="20%">成品库存</th>
+            <th width="20%">半成品库存</th>
+            <th width="20%">库存小计</th>
+            </thead>
+        </table>
+    </section>
+
+
+    <section class="col-md-9" id="order_detail">
+
+        <table class="table table-striped" id="pur_order_detail">
+
+
+            <tbody>
+            {% for foo in order_detail %}
+                {% if foo.pur_total < 0 %}
+                    <tr style="color: red;">
+                        <td width="20%">{{ foo.pur_pro_id }}</td>
+                        <td width="20%">{{ foo.pur_count }}</td>
+                        <td width="20%">{{ foo.pur_pro_count }}</td>
+                        <td width="20%">{{ foo.pur_half_count }}</td>
+                        <td width="20%">{{ foo.pur_total }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td width="20%">{{ foo.pur_pro_id }}</td>
+                        <td width="20%">{{ foo.pur_count  }}</td>
+                        <td width="20%">{{ foo.pur_pro_count }}</td>
+                        <td width="20%">{{ foo.pur_half_count }}</td>
+                        <td width="20%">{{ foo.pur_total }}</td>
+                    </tr>
+                {% endif %}
+
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </section>
+
+
+
+
+    {#    <section class="col-md-9" id="order_submit">#}
+    {#        <buttom type="submit" class="btn btn-primary">完成</buttom>#}
+    {#    </section>#}
+
+
+{% endblock %}

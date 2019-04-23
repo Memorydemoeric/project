@@ -1,0 +1,136 @@
+{% extends 'base_main.html' %}
+{% load static %}
+{% block ex_css %}
+    <link rel="stylesheet" href="{% static 'css/edit_purchase_order.css' %}">
+{% endblock %}
+
+{% block ex_js %}
+    <script type="text/javascript" src="{% static 'js/edit_purchase_order.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+    <nav class="col-md-1  navbar navbar-default" id="main_navigate">
+        <div class="container-fluid">
+            <ul class="nav nav-pills nav-stacked">
+                <!-- 这里的active属性就是使得所在的li的背景色变为蓝色-->
+                <li class="active"><a href="/purchase/">进货管理</a></li>
+                <li><a href="/sales/">销售管理</a></li>
+                <li><a href="/storage/">库存管理</a></li>
+                <li><a href="/report/">报表管理</a></li>
+                <li><a href="/info/">基本资料</a></li>
+                <li><a href="/system/">系统维护</a></li>
+            </ul>
+        </div>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <section class="col-md-9" id="order">
+        <table class="table table-striped" id="pur_order">
+            <thead>
+            <tr>
+                <th width="15%">订单编号</th>
+                <th width="15%">地区</th>
+                <th width="15%">客户姓名</th>
+                <th width="15%">金额</th>
+                <th width="20%">预计完成时间</th>
+                <th width="10%">经手人</th>
+            </tr>
+            </thead>
+            <tbody name="order_{{ order.id }}">
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.pur_location_name }}</td>
+                <td>{{ order.pur_cust_name }}</td>
+                <td>{{ order.pur_price|floatformat:'2' }}</td>
+                <td>{{ order.pur_modify_date }}　<img id="modify_date" name="{{ order.id }}" width="10%"
+                                                     src="{% static 'img/icon.jpg' %}"
+                                                     title="修改时间" alt=""></td>
+                <td>{{ order.pur_handle }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+
+    <section class="col-md-10" id="add_order">
+        <form class="form-inline" action="/purchase/create_pur_detail/?ord_id={{ order.id }}" method="post" enctype="multipart/form-data" id="upload_form">
+            <div class="form-group">
+                <label for="pro_id">商品编号：</label>
+                <input type="text" class="form-control" name="pro_id" id="pro_id" placeholder="请输入商品编号">
+            </div>
+            <div class="form-group">
+                <label for="pro_count">　　数量：</label>
+                <input type="number" class="form-control" name="pro_count" id="pro_count" placeholder="请输入商品数量">
+            </div>
+            　　
+            <button type="submit" class="btn btn-primary" id="pur_submit">添加</button>　　
+            <button type="button" class="btn btn-primary" id="file_upload_button">上传文件</button>
+            <input type="file" id="file_in" accept="application/vnd.ms-excel" name="file_in">
+
+        </form>
+    </section>
+
+    <section class="col-md-9" id="order_detail_title">
+        <table class="table table-striped" id="pur_order_detail">
+            <thead>
+            <th width="10%">商品编号</th>
+            <th width="15%">商品类型</th>
+            <th width="15%">订货数量</th>
+            <th width="15%">单价</th>
+            <th width="10%">折扣 %</th>
+            <th width="15%">金额</th>
+            <th width="20%">操作</th>
+            </thead>
+        </table>
+    </section>
+
+
+    <section class="col-md-9" id="order_detail">
+
+        <table class="table table-striped" id="pur_order_detail">
+
+
+            <tbody>
+            {% for foo in order_detail %}
+                <tr>
+                    <td width="10%">{{ foo.pur_pro_id_id }}</td>
+                    <td width="15%">{{ foo.pur_pro_type }}</td>
+                    <td width="15%">{{ foo.pur_pro_count }}</td>
+                    <td width="15%">{{ foo.pur_pro_unit_price }}</td>
+                    <td width="10%">{{ order.cust_id.cust_rebate }}</td>
+                    <td width="15%">{{ foo.pur_pro_price|floatformat:'2' }}</td>
+                    <td width="20%"><a name="order_{{ foo.pur_pro_id_id }}" class="del_order_detail"
+                                       href="/purchase/del_order_detail/?ord_id={{ order.id }}&pur_pro_id={{ foo.pur_pro_id_id }}">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </section>
+
+    <section class="col-md-9" id="order_detail_footer">
+        <table class="table table-striped">
+            <tfoot>
+            <th width="10%">合计：</th>
+            <th width="15%"></th>
+            <th width="15%">{{ count }} 个</th>
+            <th width="15%"></th>
+            <th width="10%"></th>
+            <th width="15%">{{ price|floatformat:'2' }} 元</th>
+            <th width="20%"></th>
+            </tfoot>
+        </table>
+    </section>
+
+
+    {#    <section class="col-md-9" id="order_submit">#}
+    {#        <buttom type="submit" class="btn btn-primary">完成</buttom>#}
+    {#    </section>#}
+
+
+{% endblock %}

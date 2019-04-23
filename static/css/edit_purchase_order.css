@@ -1,0 +1,48 @@
+td, th {
+    text-align: center;
+}
+
+#add_order {
+    padding: 0 2rem;
+    margin: 2rem 2rem;
+}
+
+.del_order, .modify_order {
+    color: #337ab9;
+    cursor: pointer;
+}
+
+#order {
+    width: 84%;
+    height: 12rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+    overflow: auto;
+}
+
+#order_detail_title {
+    width: 84%;
+    height: 4rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+}
+
+#order_detail {
+    width: 85%;
+    height: 40rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+    overflow-y: scroll;
+}
+
+#order_detail_footer {
+    width: 84%;
+    height: 4rem;
+    padding: 0 2rem;
+    margin: 0 2rem;
+}
+
+#file_in {
+    display: none;
+}
+
