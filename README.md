@@ -1,2 +1,2 @@
 # project
-a storage systom
+a storage system
